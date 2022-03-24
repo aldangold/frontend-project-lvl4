@@ -2,6 +2,10 @@
 
 [![github action status](https://github.com/hexlet-components/projects-frontend-l4-server/workflows/Node%20CI/badge.svg)](../../actions)
 
+## Demo
+
+* [frontend-chat-ru](https://frontend-chat-ru.herokuapp.com/)
+
 ## Requirements
 
 * [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
