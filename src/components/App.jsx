@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,13 +8,13 @@ import {
   useLocation,
 } from 'react-router-dom';
 
-import { Button, Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Container } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
-
 
 import Login from './Login';
 import NotFound from './NotFound';
-import useAuth from '../hooks/index.jsx';
+import useAuth from '../hooks/index';
+import Chat from './Chat';
 
 const RequireAuth = ({ children }) => {
   const auth = useAuth();
@@ -38,16 +38,10 @@ export default function App() {
             </Container>
         </Navbar>
 
-          <Nav className="mr-auto">
-          <Nav.Link as={Link} to="/">Home</Nav.Link>
-          <Nav.Link as={Link} to="/login">Login</Nav.Link>
-          <Nav.Link as={Link} to="/404">NotFound</Nav.Link>
-        </Nav>
-
           <Routes>
           <Route exact path="/" element={
             <RequireAuth>
-              <Home />
+              <Chat />
             </RequireAuth>
           }
            />
@@ -62,10 +56,7 @@ export default function App() {
     </Router>
   );
 
-  function Home() {
-    return <h1>HOME</h1>;
-  }
-  
+ 
   function MissRoute() {
     return < Navigate to={{pathname: '/404'}} />
    }
