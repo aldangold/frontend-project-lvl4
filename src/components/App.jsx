@@ -13,7 +13,7 @@ import { ToastContainer } from 'react-toastify';
 
 import Login from './Login';
 import NotFound from './NotFound';
-import useAuth from '../hooks/index';
+import { useAuth } from '../hooks'
 import Chat from './Chat';
 
 const RequireAuth = ({ children }) => {
@@ -21,7 +21,7 @@ const RequireAuth = ({ children }) => {
   const location = useLocation();
 
   return (
-    auth.loggedIn ? children : <Navigate to="/login" state={{ from: location }} />
+    auth.userId ? children : <Navigate to="/login" state={{ from: location }} />
   );
 };
 

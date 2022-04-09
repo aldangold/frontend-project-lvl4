@@ -1,20 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './components/App.jsx';
 import store from './slices/index.js';
-import { AuthProvider } from './contexts/index.jsx';
+import { AuthProvider } from './contexts/authContext.jsx';
+import SocketContext from './contexts/socketContext.jsx';
+import { actions as messagesActions } from './slices/messagesSlice.js';
+import 'regenerator-runtime';
 
-export default () => {
+if (process.env.NODE_ENV !== 'production') {
+    localStorage.debug = 'chat:*';
+  }
 
-ReactDOM.render(
-    <React.StrictMode>
+export default (socket) => {
+    socket.on('newMessage', (message) => {
+        store.dispatch(messagesActions.addMessages(message));
+      });
+
+    return (
         <Provider store={store}>
             <AuthProvider>
+              <SocketContext.Provider value={socket}>
                 <App />
+              </SocketContext.Provider>
             </AuthProvider>
         </Provider>
-    </React.StrictMode>,
-    document.getElementById('chat')
-  );
-};
+    );
+  };

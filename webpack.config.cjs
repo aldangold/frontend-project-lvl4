@@ -13,12 +13,12 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist', 'public'),
     publicPath: '/assets/',
+    sourceMapFilename: "[name].js.map"
   },
   devServer: {
     compress: true,
     port: 8090,
     host: '0.0.0.0',
-    // publicPath: '/assets/',
     historyApiFallback: true,
   },
   plugins: [

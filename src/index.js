@@ -1,10 +1,14 @@
-import 'core-js/stable/index.js';
-import 'regenerator-runtime/runtime.js';
+import ReactDOM from 'react-dom';
+import 'regenerator-runtime';
+import { io } from 'socket.io-client';
 import '../assets/application.scss';
-import app from './init.js';
+import init from './init.js';
 
-if (process.env.NODE_ENV !== 'production') {
-  localStorage.debug = 'chat:*';
-}
+const app = async () => {
+  const socket = io.connect();
+  const vdom = await init(socket);
+  const chat = document.getElementById('chat');
+  ReactDOM.render(vdom, chat);
+};
 
 app();
