@@ -50,7 +50,7 @@ const LoginPage = (props) => {
           <div className='card shadow-sm'>
             <div className='card-body row p-5'>
               <div className='col-12 col-md-6 d-flex align-items-center justify-content-center'>
-              <img className='col-md-12 row' src={'https://cdn.dribbble.com/users/709969/screenshots/2663337/rocket_loader.gif'}></img>
+              <img className='col-md-12 row img-fluid' src={'https://www.campaignregistry.com/wp-content/uploads/tcr-launch.jpg'}></img>
               </div>
                 <Form onSubmit={formik.handleSubmit} className='col-12 col-md-6 mt-3 mt-mb-0'>
                 <h1 className="text-center mb-4">Войти</h1>

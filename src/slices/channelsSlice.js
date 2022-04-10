@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const defaultChannelId = 1;
+
 const initialState = {
     channels: [],
-    currentChannel: 1,
+    currentChannel: defaultChannelId,
 };
 
 const channelsSlice = createSlice({
@@ -13,8 +15,21 @@ const channelsSlice = createSlice({
       state.channels = payload;
     },
     setCurrentChannel(state, { payload }) {
-        state.currentChannel = payload;
-      },
+      state.currentChannel = payload;
+    },
+    addChannel(state, { payload }) {
+      state.channels.push(payload);
+    },
+    renameChannel(state, { payload }) {
+      const channel = state.channels.find((c) => c.id === payload.id);
+      channel.name = payload.name;
+    },
+    removeChannel(state, { payload }) {
+      state.channels = state.channels.filter(({ id }) => id !== payload.id);
+      if (payload.id === state.currentChannel) {
+        state.currentChannel = defaultChannelId;
+      }
+    },
   },
 });
 

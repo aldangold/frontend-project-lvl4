@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch, batch } from 'react-redux';
+import { useDispatch, useSelector, batch } from 'react-redux';
 import axios from 'axios';
 import {
   Container,
@@ -10,6 +10,7 @@ import {
 import routes from '../routes.js';
 import Channels from './Channels.jsx';
 import Messages from './Messages.jsx';
+import getModal from '../components/modals';
 
 import { actions as channelsActions } from '../slices/channelsSlice.js';
 import { actions as messagesActions } from '../slices/messagesSlice.js';
@@ -24,8 +25,18 @@ const getAuthHeader = () => {
     return {};
   };
 
+const renderModal = (modal) => {
+  if (!modal.type) {
+    return null;
+  }
+
+  const Modal = getModal(modal.type);
+  return <Modal />;
+};
+
 const Chat = () => {
     const dispatch = useDispatch();
+    const { modals } = useSelector((state) => state.modalsReducer);
  
     useEffect(() => {
       const fetchData = async () => {
@@ -56,6 +67,7 @@ const Chat = () => {
               </Col>
             </Row>
           </Container>
+          {renderModal(modals)}
         </>
       );
   };
