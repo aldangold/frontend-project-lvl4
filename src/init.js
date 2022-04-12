@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import App from './components/App.jsx';
+import App from './App.jsx';
 import store from './slices/index.js';
 import { AuthProvider } from './contexts/authContext.jsx';
 import SocketContext from './contexts/socketContext.jsx';

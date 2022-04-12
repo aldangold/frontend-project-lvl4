@@ -3,18 +3,20 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { useFormik } from 'formik';
 import { Button, Form } from 'react-bootstrap';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../hooks';
 import routes from '../routes.js';
 
-const LoginPage = (props) => {
+
+const Login = () => {
 
   const auth = useAuth();
   const [authFailed, setAuthFailed] = useState(false);
   const inputRef = useRef();
   const location = useLocation();
   const navigate = useNavigate();
-  const { state } = props;
+
+
   useEffect(() => {
     inputRef.current.focus();
   }, []);
@@ -30,8 +32,7 @@ const LoginPage = (props) => {
       try {
         const res = await axios.post(routes.loginPath(), values);
         auth.logIn(res.data);
-        const { from } = location.state || state || { from: { pathname: '/' } };
-        navigate(from);
+        navigate('/');
       } catch (err) {
         if (err.isAxiosError && err.response.status === 401) {
           setAuthFailed(true);
@@ -63,8 +64,8 @@ const LoginPage = (props) => {
                       id="username"
                       autoComplete="username"
                       isInvalid={authFailed}
-                      required
                       ref={inputRef}
+                      required
                     />
                   </Form.Group>
                   <Form.Group className='form-floating mb-4'>
@@ -87,7 +88,7 @@ const LoginPage = (props) => {
             <div className='card-footer p-4'>
               <div className='text-center'>
                 <span>Нет аккаунта?</span>
-                  <a href='/'>И не будет</a>
+                <Link to="/signup">{'Регистрация'}</Link>
               </div> 
             </div>
           </div>
@@ -98,4 +99,4 @@ const LoginPage = (props) => {
 
 };
 
-export default LoginPage;
+export default Login;
