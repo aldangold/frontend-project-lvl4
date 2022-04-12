@@ -70,7 +70,7 @@ const SignUp = () => {
                       autoComplete="username"
                       onBlur={formik.handleBlur}
                       ref={inputRef}
-                      isInvalid={!!formik.errors.username || registrationFailed}
+                      isInvalid={(!!formik.errors.username || registrationFailed) && formik.touched.username}
                       required
                     />
                   <Form.Control.Feedback type="invalid" tooltip>
@@ -88,7 +88,7 @@ const SignUp = () => {
                       id="password"
                       autoComplete="new-password"
                       onBlur={formik.handleBlur}
-                      isInvalid={!!formik.errors.password || registrationFailed}
+                      isInvalid={(!!formik.errors.password || registrationFailed) && formik.touched.password}
                       required
                     />
                   <Form.Control.Feedback type="invalid" tooltip>
@@ -106,14 +106,14 @@ const SignUp = () => {
                       id="confirmPassword"
                       autoComplete="new-password"
                       onBlur={formik.handleBlur}
-                      isInvalid={!!formik.errors.confirmPassword || registrationFailed}
+                      isInvalid={(!!formik.errors.confirmPassword || registrationFailed) && formik.touched.confirmPassword}
                       required
                     />
-                  <Form.Control.Feedback type="invalid" tooltip>
-                    {formik.errors.confirmPassword}
-                  </Form.Control.Feedback>
-                  {registrationFailed && (<Form.Control.Feedback type="invalid" tooltip >username exist</Form.Control.Feedback>)}
-                  
+                    { formik.errors.confirmPassword
+                    ? <Form.Control.Feedback type="invalid" tooltip> {formik.errors.confirmPassword} </Form.Control.Feedback>
+                    : registrationFailed && (<Form.Control.Feedback type="invalid" tooltip >username exist</Form.Control.Feedback>)
+                    }
+                 
                   </Form.Group>
                   <Button className='w-100 mb-3 btn btn-outline-primary' type="submit" variant="outline-primary">Submit</Button>
                 </Form>
