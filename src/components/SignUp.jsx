@@ -2,8 +2,9 @@ import axios from 'axios';
 import * as yup from 'yup';
 import React, { useEffect, useRef, useState } from 'react';
 import { useFormik } from 'formik';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Container, Row, Col, Card, Image } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../hooks';
 import routes from '../routes.js';
 
@@ -13,15 +14,16 @@ const SignUp = () => {
   const [registrationFailed, setRegistrationFailed] = useState(false);
   const inputRef = useRef();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     inputRef.current.focus();
   }, []);
 
   const validate = yup.object().shape({
-    username: yup.string().required().min(3, 'usernameMin').max(20, 'usernameMax'),
-    password: yup.string().required().min(6, 'passwordMin'),
-    confirmPassword: yup.string().required().oneOf([yup.ref('password')], 'confirmPassword'),
+    username: yup.string().required(t('yup.required')).min(3, t('yup.username')).max(20, t('yup.username')),
+    password: yup.string().required(t('yup.required')).min(6, t('yup.passwordMin')),
+    confirmPassword: yup.string().required(t('yup.required')).oneOf([yup.ref('password')], t('yup.confirmPassword')),
   });
 
 
@@ -50,17 +52,19 @@ const SignUp = () => {
   });
 
   return (
-    <div className='container-fluid h-100'>
-      <div className='row justify-content-center align-content-center h-100'>
-        <div className='col-12 col-md-8 col-xxl-6'>
-          <div className='card shadow-sm'>
-            <div className='card-body row p-5'>
-              <div className='col-12 col-md-6 d-flex align-items-center justify-content-center'>
-              <img className='col-md-12 row img-fluid' src={'https://www.campaignregistry.com/wp-content/uploads/tcr-launch.jpg'}></img>
-              </div>
+    <Container fluid className='h-100'>
+      <Row className='justify-content-center align-content-center h-100'>
+        <Col xs={12} md={8} xxl={6}>
+          <Card className='shadow-sm'>
+            <Card.Body className='row p-5'>
+              <Col xs={12} md={6} className='d-flex align-items-center justify-content-center'>
+                <Col md={12}>
+                  <Image className='img-fluid' src={'https://www.campaignregistry.com/wp-content/uploads/tcr-launch.jpg'}/>
+                </Col>
+              </Col>
                 <Form onSubmit={formik.handleSubmit} className='col-12 col-md-6 mt-3 mt-mb-0'>
-                <h1 className="text-center mb-4">Регистрация</h1>
-                  <Form.Group className='form-floating mb-3'>
+                <h1 className="text-center mb-4">{t('signupPage.title')}</h1>
+                <Form.FloatingLabel className="mb-3" id="username" label={t('signupPage.form.username')}>
                     <Form.Control className='form-control'
                       onChange={formik.handleChange}
                       value={formik.values.username}
@@ -75,10 +79,10 @@ const SignUp = () => {
                     />
                   <Form.Control.Feedback type="invalid" tooltip>
                     {formik.errors.username}
-                  </Form.Control.Feedback>
-                    
-                  </Form.Group>
-                  <Form.Group className='form-floating mb-4'>
+                  </Form.Control.Feedback>                  
+                  </Form.FloatingLabel>
+
+                  <Form.FloatingLabel className="mb-4" id="password" label={t('signupPage.form.password')}>
                     <Form.Control className='form-control'
                       type="password"
                       onChange={formik.handleChange}
@@ -94,9 +98,9 @@ const SignUp = () => {
                   <Form.Control.Feedback type="invalid" tooltip>
                     {formik.errors.password}
                   </Form.Control.Feedback>
+                  </Form.FloatingLabel>
 
-                  </Form.Group>
-                  <Form.Group className='form-floating mb-4'>
+                  <Form.FloatingLabel className="mb-4" id="confirmPassword" label={t('signupPage.form.confirmPassword')}>
                     <Form.Control className='form-control'
                       type="password"
                       onChange={formik.handleChange}
@@ -111,17 +115,17 @@ const SignUp = () => {
                     />
                     { formik.errors.confirmPassword
                     ? <Form.Control.Feedback type="invalid" tooltip> {formik.errors.confirmPassword} </Form.Control.Feedback>
-                    : registrationFailed && (<Form.Control.Feedback type="invalid" tooltip >username exist</Form.Control.Feedback>)
+                    : registrationFailed && (<Form.Control.Feedback type="invalid" tooltip >{t('errors.signupFailed')}</Form.Control.Feedback>)
                     }
-                 
-                  </Form.Group>
-                  <Button className='w-100 mb-3 btn btn-outline-primary' type="submit" variant="outline-primary">Submit</Button>
+                  </Form.FloatingLabel>
+                  
+                  <Button className='w-100 mb-3 btn btn-outline-primary' type="submit" variant="outline-primary">{t('signupPage.form.button')}</Button>
                 </Form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 
 };

@@ -8,14 +8,15 @@ import {
   useLocation,
 } from 'react-router-dom';
 
-import { Navbar, Container, Button } from 'react-bootstrap';
+import { Navbar, Container, Button, Col } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
-
+import { useTranslation } from 'react-i18next';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import NotFound from './components/NotFound';
 import Chat from './components/Chat';
 import { useAuth } from './hooks';
+
 
 const RequireAuth = ({ children }) => {
   const auth = useAuth();
@@ -27,25 +28,27 @@ const RequireAuth = ({ children }) => {
 };
 
 const AuthButton = () => {
+  const { t } = useTranslation();
   const auth = useAuth();
   const location = useLocation();
 
   return (
     auth.userId
-      ? <Button onClick={auth.logOut}>Log out</Button>
-      : location.pathname === "/signup" && <Button as={Link} to="/login" >Log in</Button>
+      ? <Button onClick={auth.logOut}>{t('logOutBtn')}</Button>
+      : location.pathname === "/signup" && <Button as={Link} to="/login" >{t('logInBtn')}</Button>
   );
 };
 
 export default function App() {
+  const { t } = useTranslation();
 
   return (
     <Router>
-      <div className="d-flex flex-column h-100">
+      <Col className="d-flex flex-column h-100">
         <Navbar className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
         <Container>
             <Navbar.Brand as={Link} to="/">
-              Frontend Chat
+            {t('logo')}
             </Navbar.Brand>
             <AuthButton/>
             </Container>
@@ -64,8 +67,7 @@ export default function App() {
           <Route path="*" element={<MissRoute/>}>
           </Route>
           </Routes>
-
-      </div>
+      </Col>
       <ToastContainer />
     </Router>
   );

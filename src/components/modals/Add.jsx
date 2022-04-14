@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { Modal, Form } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -8,6 +9,8 @@ import { actions as modalsSlice } from '../../slices/modalsSlice.js';
 import { actions as channelsActions } from '../../slices/channelsSlice.js';
 
 const Add = () => {
+
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const socket = useSocket();
   const handleClose = () => dispatch(modalsSlice.setHiddenModal());
@@ -26,7 +29,7 @@ const Add = () => {
       name: '',
     },
     validationSchema: yup.object({
-      name: yup.string().required().notOneOf(listChannels, 'notOneOf'),
+      name: yup.string().required(t('yup.required')).notOneOf(listChannels, t('yup.notOneOf')),
     }),
     onSubmit: (nameChannel) => {
       socket.emit('newChannel', nameChannel, (response) => {
@@ -42,18 +45,20 @@ const Add = () => {
     <Modal centered show>
       <Modal.Header closeButton onHide={handleClose}>
         <Modal.Title>
-          {'newChannelTitle'}
+        {t('modal.newChannelTitle')}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={formik.handleSubmit} autoComplete="off">
-          <Form.Group className="form-group" controlId="addChannel">
-            <Form.Label visuallyHidden>Имя канала</Form.Label>
+          <Form.Group className="form-group" id="nameChannel">
+            <Form.Label visuallyHidden>{t('modal.nameChannel')}</Form.Label>
             <Form.Control
               ref={inputRef}
               isInvalid={formik.errors.name}
               onChange={formik.handleChange}
               value={formik.values.name}
+              placeholder={t('modal.nameChannel')}
+              id="nameChannel"
               className="mb-2"
               name="name"
               type="text"
@@ -62,10 +67,10 @@ const Add = () => {
           </Form.Group>
           <div className="d-flex justify-content-end">
             <button onClick={handleClose} type="button" className="me-2 btn btn-secondary">
-              {'cancel'}
+              {t('modal.cancelBtn')}
             </button>
             <button type="submit" className="btn btn-primary">
-              {'ok'}
+              {t('modal.button')}
             </button>
           </div>
         </Form>

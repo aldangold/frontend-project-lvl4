@@ -1,20 +1,20 @@
 
-import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { useFormik } from 'formik';
-import { Button, Form } from 'react-bootstrap';
-import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { Button, Form, Container, Row, Col, Card, Image } from 'react-bootstrap';
+import { useNavigate, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 import { useAuth } from '../hooks';
 import routes from '../routes.js';
-
 
 const Login = () => {
 
   const auth = useAuth();
   const [authFailed, setAuthFailed] = useState(false);
   const inputRef = useRef();
-  const location = useLocation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
 
   useEffect(() => {
@@ -45,21 +45,23 @@ const Login = () => {
   });
 
   return (
-    <div className='container-fluid h-100'>
-      <div className='row justify-content-center align-content-center h-100'>
-        <div className='col-12 col-md-8 col-xxl-6'>
-          <div className='card shadow-sm'>
-            <div className='card-body row p-5'>
-              <div className='col-12 col-md-6 d-flex align-items-center justify-content-center'>
-              <img className='col-md-12 row img-fluid' src={'https://www.campaignregistry.com/wp-content/uploads/tcr-launch.jpg'}></img>
-              </div>
+    <Container fluid className='h-100'>
+      <Row className='justify-content-center align-content-center h-100'>
+        <Col xs={12} md={8} xxl={6}>
+          <Card className='shadow-sm'>
+            <Card.Body className='row p-5'>
+              <Col xs={12} md={6} className='d-flex align-items-center justify-content-center'>
+                <Col md={12}>
+                  <Image className='img-fluid' src={'https://www.campaignregistry.com/wp-content/uploads/tcr-launch.jpg'}/>
+                </Col>
+              </Col>
                 <Form onSubmit={formik.handleSubmit} className='col-12 col-md-6 mt-3 mt-mb-0'>
-                <h1 className="text-center mb-4">Войти</h1>
-                  <Form.Group className='form-floating mb-3'>
+                <h1 className="text-center mb-4">{t('loginPage.title')}</h1>
+                <Form.FloatingLabel className="mb-3" id="username" label={t('loginPage.form.username')}>
                     <Form.Control className='form-control'
                       onChange={formik.handleChange}
                       value={formik.values.username}
-                      placeholder="username"
+                      placeholder={t('loginPage.form.username')}
                       name="username"
                       id="username"
                       autoComplete="username"
@@ -67,34 +69,34 @@ const Login = () => {
                       ref={inputRef}
                       required
                     />
-                  </Form.Group>
-                  <Form.Group className='form-floating mb-4'>
+                  </Form.FloatingLabel>
+                  <Form.FloatingLabel className="mb-4" id="password" label={t('loginPage.form.password')}>
                     <Form.Control className='form-control'
                       type="password"
                       onChange={formik.handleChange}
                       value={formik.values.password}
-                      placeholder="password"
+                      placeholder={t('loginPage.form.password')}
                       name="password"
                       id="password"
                       autoComplete="current-password"
                       isInvalid={authFailed}
                       required
                     />
-                    <Form.Control.Feedback type="invalid">the username or password is incorrect</Form.Control.Feedback>
-                  </Form.Group>
-                  <Button className='w-100 mb-3 btn btn-outline-primary' type="submit" variant="outline-primary">Submit</Button>
+                    <Form.Control.Feedback type="invalid">{t('errors.authFailed')}</Form.Control.Feedback>
+                  </Form.FloatingLabel>
+                  <Button className='w-100 mb-3 btn btn-outline-primary' type="submit" variant="outline-primary">{t('loginPage.form.button')}</Button>
                 </Form>
-            </div>
-            <div className='card-footer p-4'>
-              <div className='text-center'>
-                <span>Нет аккаунта?</span>
-                <Link to="/signup">{'Регистрация'}</Link>
-              </div> 
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            </Card.Body>
+            <Card.Footer className='p-4'>
+              <Container  className='text-center'>
+                <span>{t('loginPage.noAccount')}</span>
+                <Link to="/signup">{t('loginPage.registration')}</Link>
+              </Container> 
+            </Card.Footer>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 
 };

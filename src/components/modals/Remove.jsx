@@ -1,10 +1,13 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
 import { actions as modalsSlice } from '../../slices/modalsSlice.js';
 import { useSocket } from '../../hooks';
 
 const Remove = () => {
+
+  const { t } = useTranslation();
   const { modals } = useSelector((state) => state.modalsReducer);
   const dispatch = useDispatch();
   const socket = useSocket();
@@ -22,19 +25,19 @@ const Remove = () => {
     <Modal centered show>
       <Modal.Header closeButton onHide={handleClose}>
         <Modal.Title>
-          {'removeChannelTitle'}
+        {t('modal.removeChannelTitle')}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <p className="lead">
-          {'are you serious?'}
+        {t('modal.removeChannelBody')}
         </p>
         <div className="d-flex justify-content-end">
           <button onClick={handleClose} type="button" className="me-2 btn btn-secondary">
-            {'cancel'}
+          {t('modal.cancelBtn')}
           </button>
           <button onClick={handleRemove} type="button" className="btn btn-danger">
-            {'remove'}
+          {t('modal.removeBtn')}
           </button>
         </div>
       </Modal.Body>
