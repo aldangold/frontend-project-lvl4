@@ -9,8 +9,10 @@ import SocketContext from './contexts/socketContext.jsx';
 import { actions as messagesActions } from './slices/messagesSlice.js';
 import { actions as channelsActions } from './slices/channelsSlice.js';
 import 'react-toastify/scss/main.scss';
+import filter from 'leo-profanity';
 import ru from './locales/ru.js'
 import 'regenerator-runtime';
+
 
 if (process.env.NODE_ENV !== 'production') {
     localStorage.debug = 'chat:*';
@@ -25,6 +27,9 @@ export default async (socket) => {
         ru,
       },
     });
+
+    filter.loadDictionary();
+    filter.add(filter.getDictionary('ru','en'));
 
     socket.on('newMessage', (message) => {
         store.dispatch(messagesActions.addMessages(message));

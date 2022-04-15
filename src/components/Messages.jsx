@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Form, InputGroup } from 'react-bootstrap';
+import filter from 'leo-profanity';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useAuth, useSocket } from '../hooks'
@@ -34,7 +35,7 @@ const Messages = () => {
     },
     onSubmit: (values, actions) => {
       const message = {
-        body: values.body,
+        body: filter.clean(values.body),
         channelId: currentChannel,
         username: userId.username,
       };
