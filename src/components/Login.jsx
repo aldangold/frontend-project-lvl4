@@ -31,18 +31,20 @@ const Login = () => {
     },
     onSubmit: async (values) => {
       setAuthFailed(false);
-
       try {
         const res = await axios.post(routes.loginPath(), values);
         auth.logIn(res.data);
         navigate('/');
       } catch (err) {
+        if (err.message === 'Network Error') {
+          notify();
+        }
         if (err.isAxiosError && err.response.status === 401) {
           setAuthFailed(true);
           inputRef.current.select();
           return;
         }
-        notify();
+        throw err;
       }
     },
   });

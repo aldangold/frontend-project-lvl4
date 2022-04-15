@@ -44,12 +44,15 @@ const SignUp = () => {
         setRegistrationFailed(false);
         navigate('/');
       } catch (err) {
+        if (err.message === 'Network Error') {
+          notify();
+        }
         if (err.isAxiosError && err.response.status === 409) {
           setRegistrationFailed(true);
           inputRef.current.select();
           return;
         }
-        notify();
+        throw err;
       }
     },
   });
