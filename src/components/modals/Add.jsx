@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Modal, Form } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useSocket } from '../../hooks';
@@ -18,6 +19,8 @@ const Add = () => {
 
   const listChannels = useSelector((state) => state.channelsReducer.channels
     .map(({ name }) => name));
+
+  const notify = () => toast.success(t('success.createdChannel'));
 
   const inputRef = useRef();
   useEffect(() => {
@@ -36,6 +39,7 @@ const Add = () => {
         if (response.status === 'ok') {
           JumpToChannel(response.data.id);
           handleClose();
+          notify();
         }
       });
     },

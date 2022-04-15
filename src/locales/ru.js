@@ -26,6 +26,11 @@ export default {
         signupFailed: 'Такой пользователь уже существует',
         network: 'Ошибка сети',
       },
+      success: {
+        createdChannel: 'Канал создан',
+        removedChannel: 'Канал удалён',
+        renamedChannel: 'Канал переименован',
+      },
       messages: {
         messagesCount_one: '{{count}} сообщение',
         messagesCount_few: '{{count}} сообщения',

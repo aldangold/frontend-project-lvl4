@@ -1,7 +1,8 @@
 import axios from 'axios';
 import * as yup from 'yup';
-import React, { useEffect, useRef, useState } from 'react';
 import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button, Form, Container, Row, Col, Card, Image } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -15,6 +16,8 @@ const SignUp = () => {
   const inputRef = useRef();
   const navigate = useNavigate();
   const { t } = useTranslation();
+
+  const notify = () => toast.error(t('errors.network'));
 
   useEffect(() => {
     inputRef.current.focus();
@@ -46,7 +49,7 @@ const SignUp = () => {
           inputRef.current.select();
           return;
         }
-        throw err;
+        notify();
       }
     },
   });

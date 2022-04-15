@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import { Button, Form, Container, Row, Col, Card, Image } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useAuth } from '../hooks';
 import routes from '../routes.js';
@@ -15,6 +16,8 @@ const Login = () => {
   const inputRef = useRef();
   const navigate = useNavigate();
   const { t } = useTranslation();
+
+  const notify = () => toast.error(t('errors.network'));
 
 
   useEffect(() => {
@@ -39,7 +42,7 @@ const Login = () => {
           inputRef.current.select();
           return;
         }
-        throw err;
+        notify();
       }
     },
   });

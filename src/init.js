@@ -8,6 +8,7 @@ import { AuthProvider } from './contexts/authContext.jsx';
 import SocketContext from './contexts/socketContext.jsx';
 import { actions as messagesActions } from './slices/messagesSlice.js';
 import { actions as channelsActions } from './slices/channelsSlice.js';
+import 'react-toastify/scss/main.scss';
 import ru from './locales/ru.js'
 import 'regenerator-runtime';
 
