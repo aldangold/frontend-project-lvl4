@@ -70,13 +70,12 @@ const SignUp = () => {
               </Col>
                 <Form onSubmit={formik.handleSubmit} className='col-12 col-md-6 mt-3 mt-mb-0'>
                 <h1 className="text-center mb-4">{t('signupPage.title')}</h1>
-                <Form.FloatingLabel className="mb-3" id="username" label={t('signupPage.form.username')}>
+                <Form.FloatingLabel className="mb-3" controlId="username" label={t('signupPage.form.username')}>
                     <Form.Control className='form-control'
                       onChange={formik.handleChange}
                       value={formik.values.username}
                       placeholder="username"
                       name="username"
-                      id="username"
                       autoComplete="username"
                       onBlur={formik.handleBlur}
                       ref={inputRef}
@@ -88,14 +87,13 @@ const SignUp = () => {
                   </Form.Control.Feedback>                  
                   </Form.FloatingLabel>
 
-                  <Form.FloatingLabel className="mb-4" id="password" label={t('signupPage.form.password')}>
+                  <Form.FloatingLabel className="mb-4" controlId="password" label={t('signupPage.form.password')}>
                     <Form.Control className='form-control'
                       type="password"
                       onChange={formik.handleChange}
                       value={formik.values.password}
                       placeholder="password"
                       name="password"
-                      id="password"
                       autoComplete="new-password"
                       onBlur={formik.handleBlur}
                       isInvalid={(!!formik.errors.password || registrationFailed) && formik.touched.password}
@@ -106,14 +104,13 @@ const SignUp = () => {
                   </Form.Control.Feedback>
                   </Form.FloatingLabel>
 
-                  <Form.FloatingLabel className="mb-4" id="confirmPassword" label={t('signupPage.form.confirmPassword')}>
+                  <Form.FloatingLabel className="mb-4" controlId="confirmPassword" label={t('signupPage.form.confirmPassword')}>
                     <Form.Control className='form-control'
                       type="password"
                       onChange={formik.handleChange}
                       value={formik.values.confirmPassword}
                       placeholder="confirmPassword"
                       name="confirmPassword"
-                      id="confirmPassword"
                       autoComplete="new-password"
                       onBlur={formik.handleBlur}
                       isInvalid={(!!formik.errors.confirmPassword || registrationFailed) && formik.touched.confirmPassword}

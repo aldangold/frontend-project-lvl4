@@ -62,27 +62,25 @@ const Login = () => {
               </Col>
                 <Form onSubmit={formik.handleSubmit} className='col-12 col-md-6 mt-3 mt-mb-0'>
                 <h1 className="text-center mb-4">{t('loginPage.title')}</h1>
-                <Form.FloatingLabel className="mb-3" id="username" label={t('loginPage.form.username')}>
+                <Form.FloatingLabel className="mb-3" controlId="username" label={t('loginPage.form.username')}>
                     <Form.Control className='form-control'
                       onChange={formik.handleChange}
                       value={formik.values.username}
                       placeholder={t('loginPage.form.username')}
                       name="username"
-                      id="username"
                       autoComplete="username"
                       isInvalid={authFailed}
                       ref={inputRef}
                       required
                     />
                   </Form.FloatingLabel>
-                  <Form.FloatingLabel className="mb-4" id="password" label={t('loginPage.form.password')}>
+                  <Form.FloatingLabel className="mb-4" controlId="password" label={t('loginPage.form.password')}>
                     <Form.Control className='form-control'
                       type="password"
                       onChange={formik.handleChange}
                       value={formik.values.password}
                       placeholder={t('loginPage.form.password')}
                       name="password"
-                      id="password"
                       autoComplete="current-password"
                       isInvalid={authFailed}
                       required
