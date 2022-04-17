@@ -7,7 +7,12 @@ import {
   Navigate,
   useLocation,
 } from 'react-router-dom';
-import { Navbar, Container, Button, Col } from 'react-bootstrap';
+import {
+  Navbar,
+  Container,
+  Button,
+  Col,
+} from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import Login from './components/Login';
@@ -16,17 +21,16 @@ import NotFound from './components/NotFound';
 import Chat from './components/Chat';
 import { useAuth } from './hooks';
 
-
-const RequireAuth = ({ children }) => {
+function RequireAuth({ children }) {
   const auth = useAuth();
   const location = useLocation();
 
   return (
     auth.userId ? children : <Navigate to="/login" state={{ from: location }} />
   );
-};
+}
 
-const AuthButton = () => {
+function AuthButton() {
   const { t } = useTranslation();
   const auth = useAuth();
   const location = useLocation();
@@ -34,9 +38,9 @@ const AuthButton = () => {
   return (
     auth.userId
       ? <Button onClick={auth.logOut}>{t('logOutBtn')}</Button>
-      : location.pathname === "/signup" && <Button as={Link} to="/login" >{t('logInBtn')}</Button>
+      : location.pathname === '/signup' && <Button as={Link} to="/login">{t('logInBtn')}</Button>
   );
-};
+}
 
 export default function App() {
   const { t } = useTranslation();
@@ -45,34 +49,30 @@ export default function App() {
     <Router>
       <Col className="d-flex flex-column h-100">
         <Navbar className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
-        <Container>
+          <Container>
             <Navbar.Brand as={Link} to="/">
-            {t('logo')}
+              {t('logo')}
             </Navbar.Brand>
-            <AuthButton/>
-            </Container>
+            <AuthButton />
+          </Container>
         </Navbar>
 
-          <Routes>
-          <Route exact path="/" element={
-            <RequireAuth>
-              <Chat />
-            </RequireAuth>
-          }
-           />
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={(
+              <RequireAuth>
+                <Chat />
+              </RequireAuth>
+          )}
+          />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/404" element={<NotFound />} />
-          <Route path="*" element={<MissRoute/>}>
-          </Route>
-          </Routes>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </Col>
       <ToastContainer />
     </Router>
   );
-
- 
-  function MissRoute() {
-    return < Navigate to={{pathname: '/404'}} />
-   }
-};
+}

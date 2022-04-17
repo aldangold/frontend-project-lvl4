@@ -1,7 +1,14 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { useFormik } from 'formik';
-import { Button, Form, Container, Row, Col, Card, Image } from 'react-bootstrap';
+import {
+  Button,
+  Form,
+  Container,
+  Row,
+  Col,
+  Card,
+  Image,
+} from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
@@ -10,7 +17,6 @@ import { useAuth } from '../hooks';
 import routes from '../routes.js';
 
 const Login = () => {
-
   const auth = useAuth();
   const [authFailed, setAuthFailed] = useState(false);
   const inputRef = useRef();
@@ -18,7 +24,6 @@ const Login = () => {
   const { t } = useTranslation();
 
   const notify = () => toast.error(t('errors.network'));
-
 
   useEffect(() => {
     inputRef.current.focus();
@@ -91,17 +96,16 @@ const Login = () => {
                 </Form>
             </Card.Body>
             <Card.Footer className='p-4'>
-              <Container  className='text-center'>
+              <Container className='text-center'>
                 <span>{t('loginPage.noAccount')}</span>
                 <Link to="/signup">{t('loginPage.registration')}</Link>
-              </Container> 
+              </Container>
             </Card.Footer>
           </Card>
         </Col>
       </Row>
     </Container>
   );
-
 };
 
 export default Login;

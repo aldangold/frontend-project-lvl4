@@ -3,14 +3,15 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
 import React, { useEffect, useRef, useState } from 'react';
-import { Button, Form, Container, Row, Col, Card, Image } from 'react-bootstrap';
+import {
+  Button, Form, Container, Row, Col, Card, Image,
+} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../hooks';
 import routes from '../routes.js';
 
 const SignUp = () => {
-
   const auth = useAuth();
   const [registrationFailed, setRegistrationFailed] = useState(false);
   const inputRef = useRef();
@@ -28,7 +29,6 @@ const SignUp = () => {
     password: yup.string().required(t('yup.required')).min(6, t('yup.passwordMin')),
     confirmPassword: yup.string().required(t('yup.required')).oneOf([yup.ref('password')], t('yup.confirmPassword')),
   });
-
 
   const formik = useFormik({
     initialValues: {
@@ -79,12 +79,15 @@ const SignUp = () => {
                       autoComplete="username"
                       onBlur={formik.handleBlur}
                       ref={inputRef}
-                      isInvalid={(!!formik.errors.username || registrationFailed) && formik.touched.username}
+                      isInvalid={
+                        (!!formik.errors.username || registrationFailed)
+                        && formik.touched.username
+                      }
                       required
                     />
                   <Form.Control.Feedback type="invalid" tooltip>
                     {formik.errors.username}
-                  </Form.Control.Feedback>                  
+                  </Form.Control.Feedback>
                   </Form.FloatingLabel>
 
                   <Form.FloatingLabel className="mb-4" controlId="password" label={t('signupPage.form.password')}>
@@ -96,7 +99,10 @@ const SignUp = () => {
                       name="password"
                       autoComplete="new-password"
                       onBlur={formik.handleBlur}
-                      isInvalid={(!!formik.errors.password || registrationFailed) && formik.touched.password}
+                      isInvalid={
+                        (!!formik.errors.password || registrationFailed)
+                        && formik.touched.password
+                      }
                       required
                     />
                   <Form.Control.Feedback type="invalid" tooltip>
@@ -113,15 +119,17 @@ const SignUp = () => {
                       name="confirmPassword"
                       autoComplete="new-password"
                       onBlur={formik.handleBlur}
-                      isInvalid={(!!formik.errors.confirmPassword || registrationFailed) && formik.touched.confirmPassword}
+                      isInvalid={
+                        (!!formik.errors.confirmPassword || registrationFailed)
+                        && formik.touched.confirmPassword
+                      }
                       required
                     />
                     { formik.errors.confirmPassword
-                    ? <Form.Control.Feedback type="invalid" tooltip> {formik.errors.confirmPassword} </Form.Control.Feedback>
-                    : registrationFailed && (<Form.Control.Feedback type="invalid" tooltip >{t('errors.signupFailed')}</Form.Control.Feedback>)
+                      ? <Form.Control.Feedback type="invalid" tooltip> {formik.errors.confirmPassword} </Form.Control.Feedback>
+                      : registrationFailed && (<Form.Control.Feedback type="invalid" tooltip >{t('errors.signupFailed')}</Form.Control.Feedback>)
                     }
                   </Form.FloatingLabel>
-                  
                   <Button className='w-100 mb-3 btn btn-outline-primary' type="submit" variant="outline-primary">{t('signupPage.form.button')}</Button>
                 </Form>
             </Card.Body>
@@ -130,7 +138,6 @@ const SignUp = () => {
       </Row>
     </Container>
   );
-
 };
 
 export default SignUp;

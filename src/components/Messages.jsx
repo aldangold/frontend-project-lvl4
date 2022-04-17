@@ -26,7 +26,6 @@ const Messages = () => {
     inputRef.current.focus();
   }, []);
 
-
   const formik = useFormik({
     initialValues: {
       body: '',
@@ -52,11 +51,11 @@ const Messages = () => {
           <b>{`# ${CurrentChannelName}`}</b>
           </p>
           <span className="text-muted">
-          {t('messages.messagesCount', { count: messages.length })}
+            {t('messages.messagesCount', { count: messages.length })}
           </span>
         </div>
         <div id="message-box" className="chat-messages overflow-auto px-5">
-        {messages.length > 0 && messages.map((message) => (
+          {messages.length > 0 && messages.map((message) => (
             <div className="text-break mb-2" key={message.id}>
               <b>{message.username}</b>
               :

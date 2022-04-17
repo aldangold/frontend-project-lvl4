@@ -38,7 +38,7 @@ export default async (socket) => {
     });
 
   filter.loadDictionary();
-  filter.add(filter.getDictionary('ru','en'));
+  filter.add(filter.getDictionary('ru', 'en'));
 
   socket.on('newMessage', (message) => {
     store.dispatch(messagesActions.addMessages(message));

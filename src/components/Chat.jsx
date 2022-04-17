@@ -9,19 +9,19 @@ import {
 import routes from '../routes.js';
 import Channels from './Channels.jsx';
 import Messages from './Messages.jsx';
-import getModal from '../components/modals/index.js';
+import getModal from './modals/index.js';
 import { actions as channelsActions } from '../slices/channelsSlice.js';
 import { actions as messagesActions } from '../slices/messagesSlice.js';
 
 const getAuthHeader = () => {
-    const userId = JSON.parse(localStorage.getItem('userId'));
-  
-    if (userId && userId.token) {
-      return { Authorization: `Bearer ${userId.token}` };
-    }
-  
-    return {};
-  };
+  const userId = JSON.parse(localStorage.getItem('userId'));
+
+  if (userId && userId.token) {
+    return { Authorization: `Bearer ${userId.token}` };
+  }
+
+  return {};
+};
 
 const renderModal = (modal) => {
   if (!modal.type) {
@@ -33,7 +33,6 @@ const renderModal = (modal) => {
 };
 
 const Chat = () => {
-  
   const dispatch = useDispatch();
   const { modals } = useSelector((state) => state.modalsReducer);
 
@@ -47,12 +46,12 @@ const Chat = () => {
           dispatch(channelsActions.setCurrentChannel(data.currentChannelId));
         });
       } catch (error) {
-        console.log(error, 'dispatchError')
+        console.log(error, 'dispatchError');
       }
     };
 
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   return (
       <>
@@ -68,7 +67,7 @@ const Chat = () => {
         </Container>
         {renderModal(modals)}
       </>
-    );
+  );
 };
-  
-  export default Chat;
+
+export default Chat;
