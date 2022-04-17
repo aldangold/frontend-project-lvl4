@@ -7,7 +7,6 @@ import {
   Navigate,
   useLocation,
 } from 'react-router-dom';
-
 import { Navbar, Container, Button, Col } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
 import { useTranslation } from 'react-i18next';

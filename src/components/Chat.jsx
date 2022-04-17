@@ -6,12 +6,10 @@ import {
   Row,
   Col,
 } from 'react-bootstrap';
-
 import routes from '../routes.js';
 import Channels from './Channels.jsx';
 import Messages from './Messages.jsx';
-import getModal from '../components/modals';
-
+import getModal from '../components/modals/index.js';
 import { actions as channelsActions } from '../slices/channelsSlice.js';
 import { actions as messagesActions } from '../slices/messagesSlice.js';
 
