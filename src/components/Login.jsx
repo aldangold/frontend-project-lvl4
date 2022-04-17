@@ -85,7 +85,7 @@ const Login = () => {
                       isInvalid={authFailed}
                       required
                     />
-                    <Form.Control.Feedback type="invalid">{t('errors.authFailed')}</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid" tooltip>{t('errors.authFailed')}</Form.Control.Feedback>
                   </Form.FloatingLabel>
                   <Button className='w-100 mb-3 btn btn-outline-primary' type="submit" variant="outline-primary">{t('loginPage.form.button')}</Button>
                 </Form>
