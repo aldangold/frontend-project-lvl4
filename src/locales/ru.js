@@ -61,6 +61,7 @@ export default {
         title: 'Каналы',
         dropdownRemove: 'Удалить',
         dropdownRename: 'Переименовать',
+        dropdownName: 'Управление каналом',
       },
       notFoundPage: {
         code:'404',
