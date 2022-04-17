@@ -62,12 +62,12 @@ const Login = () => {
             <Card.Body className="row p-5">
               <Col xs={12} md={6} className="d-flex align-items-center justify-content-center">
                 <Col md={12}>
-                  <Image className="img-fluid" src={'https://www.campaignregistry.com/wp-content/uploads/tcr-launch.jpg'}/>
+                  <Image className="img-fluid" src={'https://www.campaignregistry.com/wp-content/uploads/tcr-launch.jpg'} />
                 </Col>
               </Col>
-                <Form onSubmit={formik.handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
-                  <h1 className="text-center mb-4">{t('loginPage.title')}</h1>
-                  <Form.FloatingLabel className="mb-3" controlId="username" label={t('loginPage.form.username')}>
+              <Form onSubmit={formik.handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
+                <h1 className="text-center mb-4">{t('loginPage.title')}</h1>
+                <Form.FloatingLabel className="mb-3" controlId="username" label={t('loginPage.form.username')}>
                   <Form.Control className="form-control"
                     onChange={formik.handleChange}
                     value={formik.values.username}
@@ -78,22 +78,22 @@ const Login = () => {
                     ref={inputRef}
                     required
                   />
-                  </Form.FloatingLabel>
-                  <Form.FloatingLabel className="mb-4" controlId="password" label={t('loginPage.form.password')}>
-                    <Form.Control className="form-control"
-                      type="password"
-                      onChange={formik.handleChange}
-                      value={formik.values.password}
-                      placeholder={t('loginPage.form.password')}
-                      name="password"
-                      autoComplete="current-password"
-                      isInvalid={authFailed}
-                      required
-                    />
-                    {authFailed && (<Form.Control.Feedback type="invalid" tooltip>{t('errors.authFailed')}</Form.Control.Feedback>)}
-                  </Form.FloatingLabel>
-                  <Button className='w-100 mb-3 btn btn-outline-primary' type="submit" variant="outline-primary">{t('loginPage.form.button')}</Button>
-                </Form>
+                </Form.FloatingLabel>
+                <Form.FloatingLabel className="mb-4" controlId="password" label={t('loginPage.form.password')}>
+                  <Form.Control className="form-control"
+                    type="password"
+                    onChange={formik.handleChange}
+                    value={formik.values.password}
+                    placeholder={t('loginPage.form.password')}
+                    name="password"
+                    autoComplete="current-password"
+                    isInvalid={authFailed}
+                    required
+                  />
+                  {authFailed && (<Form.Control.Feedback type="invalid" tooltip>{t('errors.authFailed')}</Form.Control.Feedback>)}
+                </Form.FloatingLabel>
+                <Button className="w-100 mb-3 btn btn-outline-primary" type="submit" variant="outline-primary">{t('loginPage.form.button')}</Button>
+              </Form>
             </Card.Body>
             <Card.Footer className="p-4">
               <Container className="text-center">

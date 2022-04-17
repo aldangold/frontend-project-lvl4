@@ -65,73 +65,75 @@ const SignUp = () => {
             <Card.Body className="row p-5">
               <Col xs={12} md={6} className="d-flex align-items-center justify-content-center">
                 <Col md={12}>
-                  <Image className="img-fluid" src={'https://www.campaignregistry.com/wp-content/uploads/tcr-launch.jpg'}/>
+                  <Image className="img-fluid" src={'https://www.campaignregistry.com/wp-content/uploads/tcr-launch.jpg'} />
                 </Col>
               </Col>
-                <Form onSubmit={formik.handleSubmit} className='col-12 col-md-6 mt-3 mt-mb-0'>
-                  <h1 className="text-center mb-4">{t('signupPage.title')}</h1>
-                  <Form.FloatingLabel className="mb-3" controlId="username" label={t('signupPage.form.username')}>
+              <Form onSubmit={formik.handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
+                <h1 className="text-center mb-4">{t('signupPage.title')}</h1>
+                <Form.FloatingLabel className="mb-3" controlId="username" label={t('signupPage.form.username')}>
+                <Form.Control className="form-control"
+                  onChange={formik.handleChange}
+                  value={formik.values.username}
+                  placeholder="username"
+                  name="username"
+                  autoComplete="username"
+                  onBlur={formik.handleBlur}
+                  ref={inputRef}
+                  isInvalid={
+                    (!!formik.errors.username || registrationFailed)
+                    && formik.touched.username
+                  }
+                  required
+                />
+                <Form.Control.Feedback type="invalid" tooltip>
+                  {formik.errors.username}
+                </Form.Control.Feedback>
+                </Form.FloatingLabel>
+
+                <Form.FloatingLabel className="mb-4" controlId="password" label={t('signupPage.form.password')}>
                   <Form.Control className="form-control"
+                    type="password"
                     onChange={formik.handleChange}
-                    value={formik.values.username}
-                    placeholder="username"
-                    name="username"
-                    autoComplete="username"
+                    value={formik.values.password}
+                    placeholder="password"
+                    name="password"
+                    autoComplete="new-password"
                     onBlur={formik.handleBlur}
-                    ref={inputRef}
                     isInvalid={
-                      (!!formik.errors.username || registrationFailed)
-                      && formik.touched.username
+                      (!!formik.errors.password || registrationFailed)
+                      && formik.touched.password
                     }
                     required
                   />
-                  <Form.Control.Feedback type="invalid" tooltip>
-                    {formik.errors.username}
-                  </Form.Control.Feedback>
-                  </Form.FloatingLabel>
+                <Form.Control.Feedback type="invalid" tooltip>
+                  {formik.errors.password}
+                </Form.Control.Feedback>
+                </Form.FloatingLabel>
 
-                  <Form.FloatingLabel className="mb-4" controlId="password" label={t('signupPage.form.password')}>
-                    <Form.Control className="form-control"
-                      type="password"
-                      onChange={formik.handleChange}
-                      value={formik.values.password}
-                      placeholder="password"
-                      name="password"
-                      autoComplete="new-password"
-                      onBlur={formik.handleBlur}
-                      isInvalid={
-                        (!!formik.errors.password || registrationFailed)
-                        && formik.touched.password
-                      }
-                      required
-                    />
-                  <Form.Control.Feedback type="invalid" tooltip>
-                    {formik.errors.password}
-                  </Form.Control.Feedback>
-                  </Form.FloatingLabel>
-
-                  <Form.FloatingLabel className="mb-4" controlId="confirmPassword" label={t('signupPage.form.confirmPassword')}>
-                    <Form.Control className="form-control"
-                      type="password"
-                      onChange={formik.handleChange}
-                      value={formik.values.confirmPassword}
-                      placeholder="confirmPassword"
-                      name="confirmPassword"
-                      autoComplete="new-password"
-                      onBlur={formik.handleBlur}
-                      isInvalid={
-                        (!!formik.errors.confirmPassword || registrationFailed)
-                        && formik.touched.confirmPassword
-                      }
-                      required
-                    />
-                    { formik.errors.confirmPassword
-                      ? <Form.Control.Feedback type="invalid" tooltip> {formik.errors.confirmPassword} </Form.Control.Feedback>
-                      : registrationFailed && (<Form.Control.Feedback type="invalid" tooltip >{t('errors.signupFailed')}</Form.Control.Feedback>)
+                <Form.FloatingLabel className="mb-4" controlId="confirmPassword" label={t('signupPage.form.confirmPassword')}>
+                  <Form.Control className="form-control"
+                    type="password"
+                    onChange={formik.handleChange}
+                    value={formik.values.confirmPassword}
+                    placeholder="confirmPassword"
+                    name="confirmPassword"
+                    autoComplete="new-password"
+                    onBlur={formik.handleBlur}
+                    isInvalid={
+                      (!!formik.errors.confirmPassword || registrationFailed)
+                      && formik.touched.confirmPassword
                     }
-                  </Form.FloatingLabel>
-                  <Button className='w-100 mb-3 btn btn-outline-primary' type="submit" variant="outline-primary">{t('signupPage.form.button')}</Button>
-                </Form>
+                    required
+                  />
+                  { formik.errors.confirmPassword
+                    ? <Form.Control.Feedback type="invalid" tooltip>
+                        {formik.errors.confirmPassword}
+                      </Form.Control.Feedback>
+                    : registrationFailed && (<Form.Control.Feedback type="invalid" tooltip >{t('errors.signupFailed')}</Form.Control.Feedback>)
+                  }
+                </Form.FloatingLabel>
+                <Button className="w-100 mb-3 btn btn-outline-primary" type="submit" variant="outline-primary">{t('signupPage.form.button')}</Button>
+              </Form>
             </Card.Body>
           </Card>
         </Col>
