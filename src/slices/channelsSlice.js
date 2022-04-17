@@ -1,10 +1,11 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 const defaultChannelId = 1;
 
 const initialState = {
-    channels: [],
-    currentChannel: defaultChannelId,
+  channels: [],
+  currentChannel: defaultChannelId,
 };
 
 const channelsSlice = createSlice({

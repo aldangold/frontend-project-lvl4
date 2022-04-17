@@ -11,14 +11,12 @@ import SocketContext from './contexts/socketContext.jsx';
 import { actions as messagesActions } from './slices/messagesSlice.js';
 import { actions as channelsActions } from './slices/channelsSlice.js';
 import 'react-toastify/scss/main.scss';
-
-import ru from './locales/ru.js'; 
+import ru from './locales/ru.js';
 import 'regenerator-runtime';
 
-
 if (process.env.NODE_ENV !== 'production') {
-    localStorage.debug = 'chat:*';
-  }
+  localStorage.debug = 'chat:*';
+}
 
 const rollbarConfig = {
   accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
@@ -43,20 +41,20 @@ export default async (socket) => {
   filter.add(filter.getDictionary('ru','en'));
 
   socket.on('newMessage', (message) => {
-      store.dispatch(messagesActions.addMessages(message));
-    });
+    store.dispatch(messagesActions.addMessages(message));
+  });
 
   socket.on('newChannel', (channel) => {
-      store.dispatch(channelsActions.addChannel(channel));
-    });
+    store.dispatch(channelsActions.addChannel(channel));
+  });
 
   socket.on('removeChannel', (channel) => {
-      store.dispatch(channelsActions.removeChannel(channel));
-    });
+    store.dispatch(channelsActions.removeChannel(channel));
+  });
 
   socket.on('renameChannel', (channel) => {
-      store.dispatch(channelsActions.renameChannel(channel));
-    });
+    store.dispatch(channelsActions.renameChannel(channel));
+  });
 
   return (
     <RollbarProvider config={rollbarConfig}>

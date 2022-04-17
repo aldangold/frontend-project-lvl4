@@ -4,11 +4,9 @@ import { Form, InputGroup } from 'react-bootstrap';
 import filter from 'leo-profanity';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { useAuth, useSocket } from '../hooks'
-
+import { useAuth, useSocket } from '../hooks';
 
 const Messages = () => {
-
   const inputRef = useRef();
   const socket = useSocket();
   const { userId } = useAuth();

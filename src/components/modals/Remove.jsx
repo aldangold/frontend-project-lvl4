@@ -7,7 +7,6 @@ import { actions as modalsSlice } from '../../slices/modalsSlice.js';
 import { useSocket } from '../../hooks';
 
 const Remove = () => {
-
   const { t } = useTranslation();
   const { modals } = useSelector((state) => state.modalsReducer);
   const dispatch = useDispatch();
@@ -29,19 +28,19 @@ const Remove = () => {
     <Modal centered show>
       <Modal.Header closeButton onHide={handleClose}>
         <Modal.Title>
-        {t('modal.removeChannelTitle')}
+          {t('modal.removeChannelTitle')}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <p className="lead">
-        {t('modal.removeChannelBody')}
+          {t('modal.removeChannelBody')}
         </p>
         <div className="d-flex justify-content-end">
           <button onClick={handleClose} type="button" className="me-2 btn btn-secondary">
-          {t('modal.cancelBtn')}
+            {t('modal.cancelBtn')}
           </button>
           <button onClick={handleRemove} type="button" className="btn btn-danger">
-          {t('modal.removeBtn')}
+            {t('modal.removeBtn')}
           </button>
         </div>
       </Modal.Body>

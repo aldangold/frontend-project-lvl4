@@ -11,9 +11,7 @@ import {
 import { actions as modalsSlice } from '../slices/modalsSlice.js';
 import { actions as channelsActions } from '../slices/channelsSlice.js';
 
-
 const ChannelItem = ({ id, name, removable }) => {
-
   const { t } = useTranslation();
   const { currentChannel } = useSelector((state) => state.channelsReducer);
   const dispatch = useDispatch();
@@ -54,10 +52,10 @@ const ChannelItem = ({ id, name, removable }) => {
         </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item onClick={handleRename}>
-          {t('channels.dropdownRename')}
+            {t('channels.dropdownRename')}
           </Dropdown.Item>
           <Dropdown.Item onClick={handleRemove}>
-          {t('channels.dropdownRemove')}
+            {t('channels.dropdownRemove')}
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>

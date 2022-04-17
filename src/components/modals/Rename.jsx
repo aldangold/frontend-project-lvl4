@@ -9,7 +9,6 @@ import { useSocket } from '../../hooks';
 import { actions as modalsSlice } from '../../slices/modalsSlice.js';
 
 const Rename = () => {
-
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const socket = useSocket();
@@ -42,8 +41,8 @@ const Rename = () => {
 
       socket.emit('renameChannel', data, (response) => {
         if (response.status === 'ok') {
-            handleClose();
-            notify();
+          handleClose();
+          notify();
         }
       });
     },
@@ -53,7 +52,7 @@ const Rename = () => {
     <Modal centered show>
       <Modal.Header closeButton onHide={handleClose}>
         <Modal.Title>
-        {t('modal.renameChannelTitle')}
+          {t('modal.renameChannelTitle')}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

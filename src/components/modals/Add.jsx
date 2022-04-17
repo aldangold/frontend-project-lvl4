@@ -10,12 +10,11 @@ import { actions as modalsSlice } from '../../slices/modalsSlice.js';
 import { actions as channelsActions } from '../../slices/channelsSlice.js';
 
 const Add = () => {
-
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const socket = useSocket();
   const handleClose = () => dispatch(modalsSlice.setHiddenModal());
-  const JumpToChannel = (channelId) => dispatch(channelsActions.setCurrentChannel(channelId))
+  const JumpToChannel = (channelId) => dispatch(channelsActions.setCurrentChannel(channelId));
 
   const listChannels = useSelector((state) => state.channelsReducer.channels
     .map(({ name }) => name));
@@ -49,13 +48,13 @@ const Add = () => {
     <Modal centered show>
       <Modal.Header closeButton onHide={handleClose}>
         <Modal.Title>
-        {t('modal.newChannelTitle')}
+          {t('modal.newChannelTitle')}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={formik.handleSubmit} autoComplete="off">
           <Form.Group className="form-group" controlId="name">
-            <Form.Label visuallyHidden >{t('modal.nameChannel')}</Form.Label>
+            <Form.Label visuallyHidden>{t('modal.nameChannel')}</Form.Label>
             <Form.Control
               ref={inputRef}
               isInvalid={formik.errors.name}

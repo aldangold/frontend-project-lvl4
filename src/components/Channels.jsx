@@ -6,7 +6,6 @@ import ChannelItem from './ChannelItem.jsx';
 import { actions as modalsSlice } from '../slices/modalsSlice.js';
 
 const Channels = () => {
-
   const { channels } = useSelector((state) => state.channelsReducer);
   const dispatch = useDispatch();
   const { t } = useTranslation();
