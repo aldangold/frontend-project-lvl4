@@ -54,15 +54,14 @@ const Add = () => {
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={formik.handleSubmit} autoComplete="off">
-          <Form.Group className="form-group" id="nameChannel">
-            <Form.Label visuallyHidden>{t('modal.nameChannel')}</Form.Label>
+          <Form.Group className="form-group" controlId="name">
+            <Form.Label visuallyHidden >{t('modal.nameChannel')}</Form.Label>
             <Form.Control
               ref={inputRef}
               isInvalid={formik.errors.name}
               onChange={formik.handleChange}
               value={formik.values.name}
               placeholder={t('modal.nameChannel')}
-              id="nameChannel"
               className="mb-2"
               name="name"
               type="text"
