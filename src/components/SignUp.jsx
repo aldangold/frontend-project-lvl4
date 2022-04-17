@@ -108,8 +108,8 @@ const SignUp = () => {
                     required
                   />
                   <Form.Control.Feedback type="invalid" tooltip>
-                  {formik.errors.password}
-                </Form.Control.Feedback>
+                    {formik.errors.password}
+                  </Form.Control.Feedback>
                 </Form.FloatingLabel>
 
                 <Form.FloatingLabel className="mb-4" controlId="confirmPassword" label={t('signupPage.form.confirmPassword')}>
@@ -130,9 +130,7 @@ const SignUp = () => {
                   />
                   {
                     formik.errors.confirmPassword
-                      ? (<Form.Control.Feedback type="invalid" tooltip>
-                        {formik.errors.confirmPassword}
-                      </Form.Control.Feedback>)
+                      ? (<Form.Control.Feedback type="invalid" tooltip>{formik.errors.confirmPassword}</Form.Control.Feedback>)
                       : registrationFailed && (<Form.Control.Feedback type="invalid" tooltip>{t('errors.signupFailed')}</Form.Control.Feedback>)
                   }
                 </Form.FloatingLabel>
