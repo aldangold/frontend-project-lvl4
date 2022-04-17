@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
   }
 
 const rollbarConfig = {
-  accessToken: process.env.ROLLBAR,
+  accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
   captureUncaught: true,
   captureUnhandledRejections: true,
   payload: {

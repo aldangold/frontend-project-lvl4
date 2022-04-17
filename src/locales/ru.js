@@ -1,6 +1,6 @@
 export default {
     translation: {
-      logo: 'Frontend Chat',
+      logo: 'Hexlet Chat',
       logOutBtn: 'Выйти',
       logInBtn: 'Вход',
       registration: 'Регистрация',
