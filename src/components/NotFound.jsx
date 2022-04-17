@@ -16,7 +16,7 @@ const NotFound = () => {
             <Col md={6} className="d-flex row align-items-center">
               <div>
                 {t('notFoundPage.title')}
-                  <br />
+                <br />
                 {t('notFoundPage.subTitle')}
               </div>
             </Col>

@@ -86,9 +86,9 @@ const SignUp = () => {
                     }
                     required
                   />
-                <Form.Control.Feedback type="invalid" tooltip>
-                  {formik.errors.username}
-                </Form.Control.Feedback>
+                  <Form.Control.Feedback type="invalid" tooltip>
+                    {formik.errors.username}
+                  </Form.Control.Feedback>
                 </Form.FloatingLabel>
 
                 <Form.FloatingLabel className="mb-4" controlId="password" label={t('signupPage.form.password')}>
@@ -107,7 +107,7 @@ const SignUp = () => {
                     }
                     required
                   />
-                <Form.Control.Feedback type="invalid" tooltip>
+                  <Form.Control.Feedback type="invalid" tooltip>
                   {formik.errors.password}
                 </Form.Control.Feedback>
                 </Form.FloatingLabel>
@@ -130,10 +130,10 @@ const SignUp = () => {
                   />
                   {
                     formik.errors.confirmPassword
-                      ? <Form.Control.Feedback type="invalid" tooltip>
-                          {formik.errors.confirmPassword}
-                        </Form.Control.Feedback>
-                      : registrationFailed && (<Form.Control.Feedback type="invalid" tooltip >{t('errors.signupFailed')}</Form.Control.Feedback>)
+                      ? (<Form.Control.Feedback type="invalid" tooltip>
+                        {formik.errors.confirmPassword}
+                      </Form.Control.Feedback>)
+                      : registrationFailed && (<Form.Control.Feedback type="invalid" tooltip>{t('errors.signupFailed')}</Form.Control.Feedback>)
                   }
                 </Form.FloatingLabel>
                 <Button className="w-100 mb-3 btn btn-outline-primary" type="submit" variant="outline-primary">{t('signupPage.form.button')}</Button>
