@@ -62,13 +62,14 @@ const Login = () => {
             <Card.Body className="row p-5">
               <Col xs={12} md={6} className="d-flex align-items-center justify-content-center">
                 <Col md={12}>
-                  <Image className="img-fluid" src={'https://www.campaignregistry.com/wp-content/uploads/tcr-launch.jpg'} />
+                  <Image className="img-fluid" src="https://www.campaignregistry.com/wp-content/uploads/tcr-launch.jpg" />
                 </Col>
               </Col>
               <Form onSubmit={formik.handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
                 <h1 className="text-center mb-4">{t('loginPage.title')}</h1>
                 <Form.FloatingLabel className="mb-3" controlId="username" label={t('loginPage.form.username')}>
-                  <Form.Control className="form-control"
+                  <Form.Control
+                    className="form-control"
                     onChange={formik.handleChange}
                     value={formik.values.username}
                     placeholder={t('loginPage.form.username')}
@@ -80,7 +81,8 @@ const Login = () => {
                   />
                 </Form.FloatingLabel>
                 <Form.FloatingLabel className="mb-4" controlId="password" label={t('loginPage.form.password')}>
-                  <Form.Control className="form-control"
+                  <Form.Control
+                    className="form-control"
                     type="password"
                     onChange={formik.handleChange}
                     value={formik.values.password}

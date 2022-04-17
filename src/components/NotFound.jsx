@@ -11,19 +11,19 @@ const NotFound = () => {
         <Col xs={12} md={8} xxl={6}>
           <Row className="justify-content-center">
             <Col md={2} className="d-flex row align-items-center">
-              <div className='display-4 text-uppercase'>{t('notFoundPage.code')}</div>
+              <div className="display-4 text-uppercase">{t('notFoundPage.code')}</div>
             </Col>
-            <Col md={6} className='d-flex row align-items-center'>
+            <Col md={6} className="d-flex row align-items-center">
               <div>
                 {t('notFoundPage.title')}
-                  <br/>
+                  <br />
                 {t('notFoundPage.subTitle')}
               </div>
             </Col>
           </Row>
-      </Col>
-    </Row>
-  </Container>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
