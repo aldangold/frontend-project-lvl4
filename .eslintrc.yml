@@ -10,7 +10,7 @@ plugins:
   - jest-dom
 
 extends:
-  - 'airbnb-base'
+  - "airbnb-base"
   - "plugin:jest/recommended"
   - "plugin:functional/external-recommended"
   - "plugin:functional/recommended"

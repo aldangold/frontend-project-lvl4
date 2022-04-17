@@ -54,7 +54,7 @@ const Chat = () => {
   }, [dispatch]);
 
   return (
-      <>
+    <>
         <Container className="h-100 my-4 overflow-hidden rounded shadow">
           <Row className="h-100 bg-white">
             <Col className="border-end pt-5 px-0 bg-light" xs={4} md={2}>
@@ -66,7 +66,7 @@ const Chat = () => {
           </Row>
         </Container>
         {renderModal(modals)}
-      </>
+    </>
   );
 };
 

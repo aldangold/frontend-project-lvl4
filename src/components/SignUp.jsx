@@ -58,40 +58,40 @@ const SignUp = () => {
   });
 
   return (
-    <Container fluid className='h-100'>
-      <Row className='justify-content-center align-content-center h-100'>
+    <Container fluid className="h-100">
+      <Row className="justify-content-center align-content-center h-100">
         <Col xs={12} md={8} xxl={6}>
-          <Card className='shadow-sm'>
-            <Card.Body className='row p-5'>
-              <Col xs={12} md={6} className='d-flex align-items-center justify-content-center'>
+          <Card className="shadow-sm">
+            <Card.Body className="row p-5">
+              <Col xs={12} md={6} className="d-flex align-items-center justify-content-center">
                 <Col md={12}>
-                  <Image className='img-fluid' src={'https://www.campaignregistry.com/wp-content/uploads/tcr-launch.jpg'}/>
+                  <Image className="img-fluid" src={'https://www.campaignregistry.com/wp-content/uploads/tcr-launch.jpg'}/>
                 </Col>
               </Col>
                 <Form onSubmit={formik.handleSubmit} className='col-12 col-md-6 mt-3 mt-mb-0'>
-                <h1 className="text-center mb-4">{t('signupPage.title')}</h1>
-                <Form.FloatingLabel className="mb-3" controlId="username" label={t('signupPage.form.username')}>
-                    <Form.Control className='form-control'
-                      onChange={formik.handleChange}
-                      value={formik.values.username}
-                      placeholder="username"
-                      name="username"
-                      autoComplete="username"
-                      onBlur={formik.handleBlur}
-                      ref={inputRef}
-                      isInvalid={
-                        (!!formik.errors.username || registrationFailed)
-                        && formik.touched.username
-                      }
-                      required
-                    />
+                  <h1 className="text-center mb-4">{t('signupPage.title')}</h1>
+                  <Form.FloatingLabel className="mb-3" controlId="username" label={t('signupPage.form.username')}>
+                  <Form.Control className="form-control"
+                    onChange={formik.handleChange}
+                    value={formik.values.username}
+                    placeholder="username"
+                    name="username"
+                    autoComplete="username"
+                    onBlur={formik.handleBlur}
+                    ref={inputRef}
+                    isInvalid={
+                      (!!formik.errors.username || registrationFailed)
+                      && formik.touched.username
+                    }
+                    required
+                  />
                   <Form.Control.Feedback type="invalid" tooltip>
                     {formik.errors.username}
                   </Form.Control.Feedback>
                   </Form.FloatingLabel>
 
                   <Form.FloatingLabel className="mb-4" controlId="password" label={t('signupPage.form.password')}>
-                    <Form.Control className='form-control'
+                    <Form.Control className="form-control"
                       type="password"
                       onChange={formik.handleChange}
                       value={formik.values.password}
@@ -111,7 +111,7 @@ const SignUp = () => {
                   </Form.FloatingLabel>
 
                   <Form.FloatingLabel className="mb-4" controlId="confirmPassword" label={t('signupPage.form.confirmPassword')}>
-                    <Form.Control className='form-control'
+                    <Form.Control className="form-control"
                       type="password"
                       onChange={formik.handleChange}
                       value={formik.values.confirmPassword}

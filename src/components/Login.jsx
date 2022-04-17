@@ -55,32 +55,32 @@ const Login = () => {
   });
 
   return (
-    <Container fluid className='h-100'>
-      <Row className='justify-content-center align-content-center h-100'>
+    <Container fluid className="h-100">
+      <Row className="justify-content-center align-content-center h-100">
         <Col xs={12} md={8} xxl={6}>
-          <Card className='shadow-sm'>
-            <Card.Body className='row p-5'>
-              <Col xs={12} md={6} className='d-flex align-items-center justify-content-center'>
+          <Card className="shadow-sm">
+            <Card.Body className="row p-5">
+              <Col xs={12} md={6} className="d-flex align-items-center justify-content-center">
                 <Col md={12}>
-                  <Image className='img-fluid' src={'https://www.campaignregistry.com/wp-content/uploads/tcr-launch.jpg'}/>
+                  <Image className="img-fluid" src={'https://www.campaignregistry.com/wp-content/uploads/tcr-launch.jpg'}/>
                 </Col>
               </Col>
-                <Form onSubmit={formik.handleSubmit} className='col-12 col-md-6 mt-3 mt-mb-0'>
-                <h1 className="text-center mb-4">{t('loginPage.title')}</h1>
-                <Form.FloatingLabel className="mb-3" controlId="username" label={t('loginPage.form.username')}>
-                    <Form.Control className='form-control'
-                      onChange={formik.handleChange}
-                      value={formik.values.username}
-                      placeholder={t('loginPage.form.username')}
-                      name="username"
-                      autoComplete="username"
-                      isInvalid={authFailed}
-                      ref={inputRef}
-                      required
-                    />
+                <Form onSubmit={formik.handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
+                  <h1 className="text-center mb-4">{t('loginPage.title')}</h1>
+                  <Form.FloatingLabel className="mb-3" controlId="username" label={t('loginPage.form.username')}>
+                  <Form.Control className="form-control"
+                    onChange={formik.handleChange}
+                    value={formik.values.username}
+                    placeholder={t('loginPage.form.username')}
+                    name="username"
+                    autoComplete="username"
+                    isInvalid={authFailed}
+                    ref={inputRef}
+                    required
+                  />
                   </Form.FloatingLabel>
                   <Form.FloatingLabel className="mb-4" controlId="password" label={t('loginPage.form.password')}>
-                    <Form.Control className='form-control'
+                    <Form.Control className="form-control"
                       type="password"
                       onChange={formik.handleChange}
                       value={formik.values.password}
@@ -95,8 +95,8 @@ const Login = () => {
                   <Button className='w-100 mb-3 btn btn-outline-primary' type="submit" variant="outline-primary">{t('loginPage.form.button')}</Button>
                 </Form>
             </Card.Body>
-            <Card.Footer className='p-4'>
-              <Container className='text-center'>
+            <Card.Footer className="p-4">
+              <Container className="text-center">
                 <span>{t('loginPage.noAccount')}</span>
                 <Link to="/signup">{t('loginPage.registration')}</Link>
               </Container>
