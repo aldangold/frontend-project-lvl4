@@ -24,7 +24,6 @@ Additional information:
 * Library for building user interfaces: [React](https://reactjs.org) 
 * State container for JavaScript applications [Redux Toolkit](https://redux-toolkit.js.org/)
 
-
 ## :package: Installation and launch guide
 * Installation
 ```sh
