@@ -12,7 +12,7 @@
     </a>
 </div>
 
-## :bookmark_tabs: :pager: frontend-chat
+## :pager: Slack chat on minimal settings.
 Nothing spacey just an analogue of Slack chat (very simplified version).
 
 Click [here](https://frontend-chat-ru.herokuapp.com/) to try Slack chat on minimal settings!
