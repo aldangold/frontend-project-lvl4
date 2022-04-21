@@ -22,10 +22,12 @@ const AuthProvider = ({ children }) => {
     return {};
   };
 
+  const value = {
+    userId, logIn, logOut, getAuthHeader,
+  };
+
   return (
-    <AuthContext.Provider value={{
-      userId, logIn, logOut, getAuthHeader,
-    }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
