@@ -21,16 +21,16 @@ import NotFound from './components/NotFound';
 import Chat from './components/Chat';
 import { useAuth } from './hooks';
 
-function RequireAuth({ children }) {
-  const auth = useAuth();
+const RequireAuth = ({ children }) => {
+  const { userId } = useAuth();
   const location = useLocation();
 
   return (
-    auth.userId ? children : <Navigate to="/login" state={{ from: location }} />
+    userId && userId.token ? children : <Navigate to="/login" state={{ from: location }} />
   );
-}
+};
 
-function AuthButton() {
+const AuthButton = () => {
   const { t } = useTranslation();
   const auth = useAuth();
   const location = useLocation();
@@ -40,7 +40,7 @@ function AuthButton() {
       ? <Button onClick={auth.logOut}>{t('logOutBtn')}</Button>
       : location.pathname === '/signup' && <Button as={Link} to="/login">{t('logInBtn')}</Button>
   );
-}
+};
 
 export default function App() {
   const { t } = useTranslation();

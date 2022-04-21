@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Form, InputGroup } from 'react-bootstrap';
 import filter from 'leo-profanity';
 import { useFormik } from 'formik';
+import { animateScroll } from 'react-scroll';
 import { useTranslation } from 'react-i18next';
 import { useAuth, useSocket } from '../hooks';
 
@@ -24,7 +25,14 @@ const Messages = () => {
 
   useEffect(() => {
     inputRef.current.focus();
-  }, []);
+  }, [currentChannel]);
+
+  useEffect(() => {
+    animateScroll.scrollToBottom({
+      duration: 0,
+      containerId: 'message-box',
+    });
+  }, [messages]);
 
   const formik = useFormik({
     initialValues: {
